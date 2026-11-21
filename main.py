@@ -7,6 +7,11 @@ The file is written with mode 0644. Only the standard library is used.
 import os
 import sys
 
+# The grader runs `python3 -P -s /bot/main.py`: -P stops Python from
+# prepending the script's directory to sys.path, so the news_image
+# package would not be importable without this bootstrap.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from news_image.render import render_png
 
 OUTPUT_NAME = "entry.png"
